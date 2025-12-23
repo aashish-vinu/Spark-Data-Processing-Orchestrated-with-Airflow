@@ -29,11 +29,19 @@ The Spark job (`scripts/clean_taxi.py`) performs the following cleaning steps:
      "status": "success" | "failure"
    }
 
-## Build and up the Docker
+## Build and run the Docker
 ```bash
+mkdir logs
+sudo chown -R 50000:0 logs
 docker compose up -d --build
 ```
 
+```
+Navigate to Admin > Connections
+Connection Id: spark_default (exactly this name, as it's the default used by Spark operators)
+Connection Type: Spark (or "Apache Spark" depending on your provider version)
+Host: local[*] (This tells Spark to run in local mode using all available CPU cores. Alternatives: local for single thread, or local[4] for 4 threads.)
+```
 
 ## How to Run
 
